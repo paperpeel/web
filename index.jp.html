@@ -1,10 +1,13 @@
+
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=720, maximum-scale=5.0, minimum-scale=0.25"/>
-<title>撕衣动画生成器</title>
+<meta name="viewport" content="width=720, maximum-scale=5.0, minimum-scale=0.25, ">
+<title>服を剥がすツール</title>
+<link title="HTML5.JP RSS Feed" href="http://www.html5.jp/index.rdf" type="application/rss+xml" rel="alternate" />
 <link href="colorbox/colorbox.css" type="text/css" rel="stylesheet" />
-<script src="jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="colorbox/jquery.colorbox-min.js"></script>
 <script src="colorbox/jquery.colorbox-ja.js"></script>
 <script type="text/javascript">
@@ -29,37 +32,37 @@ h1 { background-color: #88FF88; }
 </head>
 <body onload="htmlLoad()">
 <div>
-<h1>撕衣动画生成器</h1>
+<h1>服を剥がすツール</h1>
 <div align="center">
-这是一个前/后两张图生成撕纸效果GIF动画的工具。
+2枚のbefore/afterイラストに紙を破る効果をプラスしてGIFアニメを生成するツールです。
+<a href="https://twitter.com/share" class="twitter-share-button"{count} data-hashtags="paperpeel">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script><br />
+※某商標とは一切関係がありません<br />
+GIFアニメ生成について→<a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=54626599" target="_blank">pixiv</a><br />
+<a href="#inline" class="inline"><button style="font-size:20px; font-weight:bold;">使い方を見る</button></a><br />
 <br />
-※请遵照所在地相关法规使用本软件。<br />
-原作者P站教程→<a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=54626599" target="_blank">pixiv</a><br />
-注意，你现在打开的是一个搬运汉化版本，存在的任何BUG都可能得不到解决，这边是日文原版→<a href="http://mygamestudio.x.fc2.com/paperpeel/" target="_blank">FC2</a><br />
-<a href="#inline" class="inline"><button style="font-size:20px; font-weight:bold;">点击查看教程</button></a><br />
-<br />
-<a href="http://mygamestudio.x.fc2.com/milkext/"><button>白浊液生成器</button></a>← 其他软件（此为FC2原址，均未搬运） →<a href="http://mygamestudio.x.fc2.com/skskanim/"><button>抹除效果生成器</button></a>
+<a href="http://mygamestudio.x.fc2.com/milkext/"><button>白い液体はこちら</button></a>← その他のツール →<a href="http://mygamestudio.x.fc2.com/skskanim/"><button>スケスケはこちら</button></a>
 </div>
 <hr />
-<h2>0, 选择动画尺寸和格式（如果你不熟悉这些，放着不管就行）</h2>
+<h2>0, 作る形式と大きさを選ぶ（よくわからなければそのまま）</h2>
 <div id="settings" align="center">
 </div>
 <hr />
-<h2>1, 图片导入</h2>
+<h2>1, 画像読み込み</h2>
 <div id="content" align="center" style="margin:0px; padding:0px;">
 <div style='vertical-align: middle;'>
 <div id='imgArea0' style='border: 3px dashed #FFAAAA; padding:30px; margin:10px;'>
-图片『前』 <span id="imgText0">支持拖拽图片到框中</span><br /><img name='img0thumb' width='80' src='' style='display:none;' /><br />
-<span id="imgTextFile0">或者手工选择<input type="file" onchange="dropFile0(undefined, this.files);"/></span>
+before画像 <span id="imgText0">ここにファイルをドラッグ＆ドロップ</span><br /><img name='img0thumb' width='80' src='' style='display:none;' /><br />
+<span id="imgTextFile0">もしくは<input type="file" onchange="dropFile0(undefined, this.files);"/></span>
 </div>
 <div id='imgArea1' style='border: 3px dashed #AAAAFF; padding:30px; margin:10px;'>
-图片『后』 <span id="imgText1">支持拖拽图片到框中</span><br /><img name='img1thumb' width='80' src='' style='display:none;' /><br />
-<span id="imgTextFile1">或者手工选择<input type="file" onchange="dropFile1(undefined, this.files);"/></span>
+after画像 <span id="imgText1">ここにファイルをドラッグ＆ドロップ</span><br /><img name='img1thumb' width='80' src='' style='display:none;' /><br />
+<span id="imgTextFile1">もしくは<input type="file" onchange="dropFile1(undefined, this.files);"/></span>
 </div>
 </div>
 <hr />
-<h2 align="center">2, 拖动红色<span style="color:red;">＋──＋</span>的十字调整效果</h2>
-拖动黄色<span style="color:yellow;">■</span>调整撕纸宽度（如果你不熟悉这些，放着不管就行）
+<h2 align="center">2, 赤い<span style="color:red;">＋──＋</span>のマークを移動させて効果を調整</h2>
+黄色い<span style="color:yellow;">■</span>のゲージで幅の調整（よくわからなければそのまま）
 <div id="game" align="center" style="margin:0px; padding:0px;">
 <img name='anime0' hidden src='' onload='imgLoadEnd();' />
 <img name='anime1' hidden src='' onload='imgLoadEnd();' />
@@ -73,16 +76,16 @@ h1 { background-color: #88FF88; }
 </div>
 </div>
 <hr />
-<h2 align="center">3, 最后按生成按钮（需要稍等片刻）</h2>
+<h2 align="center">3, 生成ボタンを押す（少し時間かかります）</h2>
 <div align="center">
 <form>
-<input id="createButton" type="button" value="生成动画" style="width: 200px; height: 50px; font-size: 20px;" onclick="imgRecord()" disabled/>
+<input id="createButton" type="button" value="アニメ生成" style="width: 200px; height: 50px; font-size: 20px;" onclick="imgRecord()" disabled/>
 </form>
 <div id='record' align="center">
 </div>
 </div>
 <hr />
-<h2 align="center">4, 完成！ 单击[下载]链接可以在新窗口打开图片。</h2>
+<h2 align="center">4, 完成！ [ダウンロード]リンクを押すと別窓で開きます</h2>
 <div align="center">
 <div id='saved' align="center">
 </div>
@@ -92,19 +95,18 @@ h1 { background-color: #88FF88; }
 <div align="center">
 <br />
 <div style="margin-left:auto; margin-right:auto; width:70%; text-align:left;">
-※图片过大时，Twitter专用将会控制图片大小到3MB，Tumblr专用将控制尺寸到500x500px或以下<br/>
-(Twitter上传限制3MB、Tumblr上传限制2MB 尺寸500x500px以下 并非官方确定值，仅供参考)<br />
-※翻者注：微博的gif限制是20MB，但是大图不缩，即『不动戳大』的宽度限制是430px<br />
-※输入图片色阶过多的情况下，由于GIF的压缩原理，会导致画面闪烁或者部分颜色丢失。
+※大きなサイズのイラストをつっこんだ場合、Twitter用はだいたい3MBくらい、Tumblr用は縦横どちらか500px以下になるようサイズを縮小しています。<br />
+(Twitter投稿は3MB以下、Tumblrは2MB以下＆500x500px以下らしいですが確実な数値ではないようです)<br />
+※グラデーション含む色数が多いイラストの場合、出力するとGIF圧縮の関係で色数が減りチラつくことがあります。
 <br />
 <br />
 <dl>
-<dt>Q, Twitter/Tumblr上传失败！</dt>
-<dd>A, 由于上述的尺寸大小限制因素，可以尝试在大小质量调整中选择<b>更小、质量更低</b>。<br />
-Tumblr上传时强烈推荐使用WebM视频格式（*.webm）。
+<dt>Q, Twitter/Tumblrに投稿できない！</dt>
+<dd>A, 上記のようにサイトにより制限があります。サイズ調整を<b>小さめ</b>に設定してお試しください。<br />
+Tumblr投稿の場合はWebM動画形式(*.webm)をオススメしております。
 </dd>
-<dt>Q, 图片频闪！ 或 一部分的颜色变得闪亮亮的！</dt>
-<dd>A, 可以尝试原图在导入制作前保存成gif格式，人工预处理减色，上述问题就会好些了。</dd>
+<dt>Q, チラつきがひどい！ or 一部が色が変わってしまいチカチカする！</dt>
+<dd>A, 元イラストを予めGIF形式にしてから（減色してから）ご利用いただくと、軽減できることが多いです。</dd>
 </dl>
 </div>
 <br />
@@ -120,7 +122,7 @@ Tumblr上传时强烈推荐使用WebM视频格式（*.webm）。
 </div>
 <div style="display:none;">
 <div align="center" id="inline" style="background-color:#FFFFFF;">
-<button style="font-size:20px; font-weight:bold;" onclick="$.colorbox.close()">关闭</button><br />
+<button style="font-size:20px; font-weight:bold;" onclick="$.colorbox.close()">閉じる</button><br />
 <img src="tutorial_100.png" /><br />
 <hr style="height:30px; background-color:#888888;">
 <img src="tutorial_101.png" /><br />
@@ -133,9 +135,9 @@ Tumblr上传时强烈推荐使用WebM视频格式（*.webm）。
 <hr style="height:30px; background-color:#888888;">
 <img src="tutorial_105.png" /><br />
 <hr style="height:30px; background-color:#888888;">
-GIF动画生成成功！<br />
+完成したGIFアニメ<br />
 <img src="tutorial.gif" /><br />
-<button style="font-size:20px; font-weight:bold;" onclick="$.colorbox.close()">关闭</button>
+<button style="font-size:20px; font-weight:bold;" onclick="$.colorbox.close()">閉じる</button>
 </div>
 </div>
 <script type="text/javascript">
@@ -150,29 +152,29 @@ area1.addEventListener('drop', dropFile1);
 var settingText = ''
 + '<form name="compressConfig">'
 + ' <div style="width: 50%; background-color: #FFFF88;">'
-+ ' GIF图片'
-+ ' <input type="radio" name="compressType" value="twitter" checked>Twitter专用</input>'
-+ ' <input type="radio" name="compressType" value="tumblr">Tumblr专用</input>'
-+ ' <input type="radio" name="compressType" value="none">原始尺寸</input>'
++ ' GIFアニメ'
++ ' <input type="radio" name="compressType" value="twitter" checked>Twitter用</input>'
++ ' <input type="radio" name="compressType" value="tumblr">Tumblr用</input>'
++ ' <input type="radio" name="compressType" value="none">原寸サイズ</input>'
 + ' </div>'
 + ' <div style="width: 50%; background-color: #FFFF88;">'
-+ ' 大小质量调整 更小、质量更低'
++ ' サイズ調整 小さめ'
 + ' <input type="radio" name="sizeType" value="smallest_ex"></input>'
 + ' <input type="radio" name="sizeType" value="smallest"></input>'
 + ' <input type="radio" name="sizeType" value="smaller"></input>'
 + ' <input type="radio" name="sizeType" value="middle" checked></input>'
 + ' <input type="radio" name="sizeType" value="larger"></input>'
 + ' <input type="radio" name="sizeType" value="largest"></input>'
-+ ' <input type="radio" name="sizeType" value="largest_ex"></input> 更大、质量更高'
++ ' <input type="radio" name="sizeType" value="largest_ex"></input> 大きめ'
 + ' </div>'
 + ' <div style="width: 50%; background-color: #FFAA88;">'
-+ ' WebM视频';
++ ' WebM動画';
 if (window.navigator.userAgent.toLowerCase().indexOf('chrome') != -1) {
 settingText += ''
-+ ' <input type="radio" name="compressType" value="noneMov">原始尺寸</input>';
++ ' <input type="radio" name="compressType" value="noneMov">原寸サイズ</input>';
 } else {
 settingText += ''
-+ ' <input type="radio" name="compressType" value="noneMov" disabled>原始尺寸</input> ※仅对应谷歌浏览器';
++ ' <input type="radio" name="compressType" value="noneMov" disabled>原寸サイズ</input> ※Google Chromeのみ対応';
 }
 settingText += ''
 + ' </div>'
@@ -323,7 +325,7 @@ var url = window.URL.createObjectURL(data);
 else
 var url = window.webkitURL.createObjectURL(data);
 document.getElementById("saved").innerHTML = "<video id='savedMov' src='" + url + "' controls autoplay loop></video>";
-document.getElementById('download').innerHTML = "<a href='" + url + "' target='_blank'>[下载　*.webm]</a>";
+document.getElementById('download').innerHTML = "<a href='" + url + "' target='_blank'>[ダウンロード　*.webm]</a>";
 }
 } else {
 var mime = 'image/gif';
@@ -339,14 +341,25 @@ window.navigator.msSaveBlob(blob, "anime.gif");
 } else {
 if (window.URL) {
 var url = window.URL.createObjectURL(blob);
-document.getElementById("download").innerHTML = "<a href='" + url + "' target='_blank'>[下载 *.gif]</a>";
+document.getElementById("download").innerHTML = "<a href='" + url + "' target='_blank'>[ダウンロード *.gif]</a>";
 } else {
 var url = window.webkitURL.createObjectURL(blob);
-document.getElementById("download").innerHTML = "<a href='" + url + "' target='_blank'>[下载 *.gif]</a>";
+document.getElementById("download").innerHTML = "<a href='" + url + "' target='_blank'>[ダウンロード *.gif]</a>";
 }
 }
 }
 }
 </script>
-</body>
+<!-- [FC2 Analyzer] http://analyzer.fc2.com/ -->
+<script language="javascript" src="http://analyzer5.fc2.com/ana/processor.php?uid=58958" type="text/javascript"></script>
+<noscript><div align="right"><img src="http://analyzer5.fc2.com/ana/icon.php?uid=58958&ref=&href=&wid=0&hei=0&col=0" /></div></noscript>
+<!-- [FC2 Analyzer] -->
+<script type="text/javascript"><!--
+var fc2footerparam = 'charset=' + (document.charset ? document.charset : document.characterSet) + '&url=' + document.location + '&service=1&r=' + Math.floor(Math.random()*99999999999);
+var fc2footertag = '<' + 'script src="http://adult.vip.chps-api.fc2.com/apis/footer/?' + fc2footerparam + '" charset="UTF-8"><' + '/script>';
+document.write(fc2footertag);
+//--></script>
+<!-- FC2, inc.-->
+<img src="http://media.fc2.com/counter_img.php?id=50" style="visibility:hidden" alt="inserted by FC2 system" width="0" height="0">
+<!-- FC2, inc.--></body>
 </html>
